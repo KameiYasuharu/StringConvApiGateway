@@ -1,0 +1,100 @@
+/* 全体のスタイル */
+body {
+	background-color: #f8f9fa;
+	font-family: 'Segoe UI', 'Meiryo', sans-serif;
+	color: #333;
+	line-height: 1.6;
+}
+
+/* コンテナスタイル */
+.container {
+	max-width: 600px;
+	padding: 2rem;
+	background: white;
+	border-radius: 8px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	margin-top: 3rem;
+}
+
+/* タイトルスタイル */
+h1 {
+	color: #2c3e50;
+	font-weight: 600;
+	text-align: center;
+	margin-bottom: 2rem;
+	padding-bottom: 0.5rem;
+	border-bottom: 2px solid #eee;
+}
+
+/* フォームスタイル */
+.form-group {
+	margin-bottom: 1.5rem;
+}
+
+.form-control {
+	border-radius: 4px;
+	padding: 0.75rem 1rem;
+	border: 1px solid #ced4da;
+	transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+	border-color: #80bdff;
+	box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* ボタンスタイル */
+.btn-primary {
+	background-color: #3498db;
+	border-color: #3498db;
+	padding: 0.5rem 1.5rem;
+	font-weight: 500;
+	transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+	background-color: #2980b9;
+	border-color: #2980b9;
+	transform: translateY(-1px);
+}
+
+/* 結果表示スタイル */
+#resultContainer,
+#errorContainer {
+	border-radius: 4px;
+	margin-top: 1.5rem;
+	padding: 10px;
+	display: none;
+	transition: opacity 0.3s ease;
+}
+
+#resultContainer.show,
+#errorContainer.show {
+	opacity: 1;
+	display: block; 
+}
+
+
+#resultContainer {
+	background-color: #d4edda;
+	border-color: #c3e6cb;
+	color: #155724;
+}
+
+#errorContainer {
+	background-color: #f8d7da;
+	border-color: #f5c6cb;
+	color: #721c24;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 576px) {
+	.container {
+		padding: 1.5rem;
+		margin-top: 1rem;
+	}
+
+	h1 {
+		font-size: 1.5rem;
+	}
+}

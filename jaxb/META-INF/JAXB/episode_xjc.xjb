@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bindings version="2.1" xmlns="http://java.sun.com/xml/ns/jaxb">
+  <!--
+
+このファイルは、JavaTM Architecture for XML Binding(JAXB) Reference Implementation、v2.3.2によって生成されました 
+<a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a>を参照してください 
+ソース・スキーマの再コンパイル時にこのファイルの変更は失われます。 
+生成日: 2025.03.27 時間 01:31:56 PM CST 
+
+  -->
+  <bindings scd="x-schema::tns" xmlns:tns="http://example.com/demo/webservice">
+    <schemaBindings map="false">
+      <package name="com.example.stringconverter.webservice"/>
+    </schemaBindings>
+    <bindings scd="tns:getImageRequest">
+      <class ref="com.example.stringconverter.webservice.GetImageRequest"/>
+    </bindings>
+    <bindings scd="tns:getImageResponse">
+      <class ref="com.example.stringconverter.webservice.GetImageResponse"/>
+    </bindings>
+  </bindings>
+</bindings>
+
