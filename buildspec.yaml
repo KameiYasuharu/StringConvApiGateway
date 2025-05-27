@@ -20,7 +20,7 @@ phases:
 
   post_build:
     commands:
-      - aws s3 sync webapps s3://map-ken-kamei-s3-test/StringConvApiGateway/
+      - aws s3 sync webapps s3://map-ken-wuxi-s3-test/StringConvApiGateway/
 
 artifacts:
   files:
