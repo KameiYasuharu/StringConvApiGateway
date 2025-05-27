@@ -14,7 +14,7 @@ phases:
       - echo "Building the Java code with Maven..."
       - mvn clean compile
       - mkdir -p webapps/WEB-INF/lib
-      - cp lib/*.jar webapps/WEB-INF/lib/
+      - cp lib/*.war webapps/WEB-INF/lib/
       - mkdir -p webapps/WEB-INF/classes
       - cp -r target/classes/* webapps/WEB-INF/classes/
 
