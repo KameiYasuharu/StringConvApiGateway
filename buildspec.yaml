@@ -4,23 +4,26 @@ phases:
   install:
     runtime-versions:
       java: corretto17
-    commands:     
+    commands:
       - curl -sSL https://archive.apache.org/dist/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.tar.gz | tar -xz -C /opt/
       - export PATH="/opt/apache-maven-3.8.4/bin:$PATH"
       - mvn --version
 
   build:
     commands:
-      - echo "Building the Java code with Maven..."
-      - mvn clean compile
-      - mkdir -p webapps/WEB-INF/lib
-      - cp lib/*.war webapps/WEB-INF/lib/
-      - mkdir -p webapps/WEB-INF/classes
-      - cp -r target/classes/* webapps/WEB-INF/classes/
+      - echo "Building WAR file with Maven..."
+      - mvn clean package
+      
+      - mkdir -p webapps
+      - cp target/*.war webapps
+
+      - mkdir -p webapps/ROOT
+      - unzip -q target/*.war -d webapps/ROOT/
 
   post_build:
     commands:
-      - aws s3 sync webapps s3://map-ken-wuxi-s3-test/StringConvApiGateway/
+      - echo "Uploading to S3..."
+      - aws s3 sync webapps/ s3://map-ken-wuxi-s3-test/StringConvApiGateway/
 
 artifacts:
   files:
