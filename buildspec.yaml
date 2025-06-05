@@ -1,32 +1,41 @@
 version: 0.2
-
+env:
+  git-credential-helper: yes
+  shell: bash
+  variables:
+    MATERIAL_VERSION: "V-1.0.3"
 phases:
   install:
     runtime-versions:
       java: corretto17
+  pre_build:
     commands:
-      - curl -sSL https://archive.apache.org/dist/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.tar.gz | tar -xz -C /opt/
-      - export PATH="/opt/apache-maven-3.8.4/bin:$PATH"
-      - mvn --version
+      - echo "Logging in to Amazon ECR..."
+      - AWS_ACCOUNT_ID=$(echo ${CODEBUILD_BUILD_ARN} | cut -f 5 -d :)
+      - ECR_REPOSITORY_URI=${AWS_ACCOUNT_ID}.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+      - ECR_REPOSITORY_NAME="map-ken-wuxi-ecr-stringconvapigateway-build-process"
+      - aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin $ECR_REGISTRY_URI
+      - echo "ECR login successful"      
 
   build:
+    on-failure: ABORT
     commands:
-      - echo "Building WAR file with Maven..."
-      - mvn clean package
+      - echo "Building the Java code..."
+      - mvn --version
+      - mvn clean install
+      - mkdir -p StringConvApiGateway-build-process-container/webapps/
+      - cp target/*.war StringConvApiGateway-build-process-container/webapps/
+      - DOCKER_IMAGE_NAME="${ECR_REPOSITORY_URI}/${ECR_REPOSITORY_NAME}:stringconvapigateway-build-process-image"
+      - docker build -t $DOCKER_IMAGE_NAME StringConvApiGateway-build-process-container/
+      - docker push $DOCKER_IMAGE_NAME
       
-      - mkdir -p webapps
-      - cp target/*.war webapps
-
-      - mkdir -p webapps/ROOT
-      - unzip -q target/*.war -d webapps/ROOT/
-
   post_build:
     commands:
-      - echo "Uploading to S3..."
-      - aws s3 sync webapps/ s3://map-ken-wuxi-s3-test/StringConvApiGateway/
+      - echo "Docker image build and push completed directly in BUILD phase."
 
 artifacts:
   files:
     - webapps/**/*
   base-directory: webapps
   discard-paths: no
+
