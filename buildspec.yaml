@@ -28,9 +28,10 @@ phases:
       - cp target/*.war StringConvApiGateway-build-process-container/webapps/
       - ls -la StringConvApiGateway-build-process-container/webapps/
       - DOCKER_IMAGE_NAME="${ECR_REPOSITORY_URI}/${ECR_REPOSITORY_NAME}:stringconvapigateway-build-process-image"
-      - echo DOCKER_IMAGE_NAME
       - docker build -t ${DOCKER_IMAGE_NAME} StringConvApiGateway-build-process-container/
       - docker push ${DOCKER_IMAGE_NAME}
+      - docker log StringConvApiGateway-build-process-container
+      - docker log ${DOCKER_IMAGE_NAME}
       
   post_build:
     commands:
