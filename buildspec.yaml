@@ -30,8 +30,7 @@ phases:
       - DOCKER_IMAGE_NAME="${ECR_REPOSITORY_URI}/${ECR_REPOSITORY_NAME}:stringconvapigateway-build-process-image"
       - docker build -t ${DOCKER_IMAGE_NAME} StringConvApiGateway-build-process-container/
       - docker push ${DOCKER_IMAGE_NAME}
-      - docker logs StringConvApiGateway-build-process-container
-      - docker logs ${DOCKER_IMAGE_NAME}
+      - docker exec -it StringConvApiGateway-build-process-container ls /usr/local/tomcat/webapps/
       
   post_build:
     commands:
