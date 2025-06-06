@@ -30,6 +30,8 @@ phases:
       - DOCKER_IMAGE_NAME="${ECR_REPOSITORY_URI}/${ECR_REPOSITORY_NAME}:stringconvapigateway-build-process-image"
       - docker build -t ${DOCKER_IMAGE_NAME} StringConvApiGateway-build-process-container/
       - docker push ${DOCKER_IMAGE_NAME}
+      - docker run -d --name StringConvApiGateway-build-process-container -p 8080:8080 stringconvapigateway-build-process-image
+      - docker logs StringConvApiGateway-build-process-container
 
   post_build:
     commands:
