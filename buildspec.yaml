@@ -31,8 +31,7 @@ phases:
       - docker build -t ${DOCKER_IMAGE_NAME} StringConvApiGateway-build-process-container/
       - docker push ${DOCKER_IMAGE_NAME}
       - docker run -d --name StringConvApiGateway-build-process-container -p 8080:8080  ${DOCKER_IMAGE_NAME}
-      - docker logs StringConvApiGateway-build-process-container
-
+      
   post_build:
     commands:
       - echo "Docker image build and push completed directly in BUILD phase."
