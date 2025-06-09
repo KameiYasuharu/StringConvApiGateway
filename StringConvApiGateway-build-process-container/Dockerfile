@@ -1,6 +1,7 @@
 FROM maven:3.9.9-amazoncorretto-17-al2023 AS builder
 RUN mkdir -p /app
 WORKDIR /app
+RUN ls -l
 COPY src src
 COPY pom.xml pom.xml
 RUN mvn clean package -DskipTests
