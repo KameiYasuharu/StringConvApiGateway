@@ -5,9 +5,9 @@ env:
   variables:
     MATERIAL_VERSION: "V-1.0.3"
     AWS_DEFAULT_REGION: "ap-northeast-1"
- phases:
- pre_build:
-    commands:
+phases:
+  pre_build:
+  commands:
       - echo "Logging in to Amazon ECR..."
       - AWS_ACCOUNT_ID=$(echo ${CODEBUILD_BUILD_ARN} | cut -f 5 -d :)
       - ECR_REPOSITORY_URI=${AWS_ACCOUNT_ID}.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
