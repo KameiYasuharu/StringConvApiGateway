@@ -15,7 +15,6 @@ phases:
       - aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${ECR_REPOSITORY_URI}
       - echo "ECR login successful"      
 
-
   build:   
       - DOCKER_IMAGE_NAME="${ECR_REPOSITORY_URI}/${ECR_REPOSITORY_NAME}:stringconvapigateway-build-process-image"
       - docker build -t ${DOCKER_IMAGE_NAME} -f StringConvApiGateway-build-process-container/Dockerfile .
