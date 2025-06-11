@@ -6,7 +6,7 @@ env:
     MATERIAL_VERSION: "V-1.0.3"
     AWS_DEFAULT_REGION: "ap-northeast-1"
  
- phases:   
+ phases:
  pre_build:
     commands:
       - echo "Logging in to Amazon ECR..."
