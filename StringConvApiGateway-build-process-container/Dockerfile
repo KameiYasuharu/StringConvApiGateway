@@ -24,15 +24,15 @@ RUN yum update -y && yum install -y shadow-utils
 
 ## デプロイ
 ### 実行用シェルの配置
-RUN mkdir -p /usr/local/tomcat/webapps/
-COPY application_start.sh /usr/local/tomcat/webapps/application_start.sh
+RUN mkdir -p /usr/webapps/
+COPY application_start.sh /usr/webapps/application_start.sh
 
 ### warファイルを配置
-COPY --from=builder /webapps/target/*.war /usr/local/tomcat/webapps/
+COPY --from=builder /webapps/target/*.war /usr/webapps/
 
 ### 非root権限
-RUN useradd myuser && chown -R myuser /usr/local/tomcat/webapps/ && chmod 755 /usr/local/tomcat/webapps/application_start.sh
+RUN useradd myuser && chown -R myuser /usr/webapps/ && chmod 755 /usr/webapps/application_start.sh
 USER myuser
 
 ### 起動
-ENTRYPOINT ["/usr/local/tomcat/webapps/application_start.sh"]
+ENTRYPOINT ["/usr/webapps/application_start.sh"]
