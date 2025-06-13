@@ -10,7 +10,7 @@ phases:
     commands:
       - echo "Logging in to Amazon ECR..."
       - AWS_ACCOUNT_ID=$(echo ${CODEBUILD_BUILD_ARN} | cut -f 5 -d :)
-      - ECR_REPOSITORY_URI=${AWS_ACCOUNT_ID}.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+      - ECR_REPOSITORY_URI=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com
       - ECR_REPOSITORY_NAME="map-ken-wuxi-ecr-stringconvapigateway-build-process"
       - aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${ECR_REPOSITORY_URI}
       - echo "ECR login successful"      
