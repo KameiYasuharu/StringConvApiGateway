@@ -14,7 +14,7 @@
             <property name="LOG_HOME" value="${LOG_PATH}/${APP_NAME}" />
         </then>
         <else>
-            <property name="LOG_HOME" value="/opt/logs/${APP_NAME}" />
+            <property name="LOG_HOME" value="/usr/logs/${APP_NAME}" />
         </else>
     </if>
 
@@ -62,6 +62,5 @@
         <resetJUL>true</resetJUL>
     </contextListener>
 
-
-
 </configuration>
+

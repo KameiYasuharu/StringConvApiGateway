@@ -30,6 +30,10 @@ COPY application_start.sh /usr/webapps/application_start.sh
 ### warファイルを配置
 COPY --from=builder /webapps/target/*.war /usr/webapps/
 
+### ログ格納フォルダを作成
+RUN mkdir -p /usr/logs/
+RUN chmod 777 /usr/logs
+
 ### 非root権限
 RUN useradd myuser && chown -R myuser /usr/webapps/ && chmod 755 /usr/webapps/application_start.sh
 USER myuser
