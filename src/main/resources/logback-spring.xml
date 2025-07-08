@@ -23,7 +23,7 @@
     <define name="ecsTaskId" class="com.example.stringconverter.util.EcsTaskIdDefiner" />
 
     <property name="LOG_PATTERN" 
-              value="[${ecsTaskId}],[%thread],%d{yyyy-MM-dd},%d{HH:mm:ss},%d{SSS},%-5level,%msg%n"/>
+              value="[${ecsTaskId}],%d{yyyy-MM-dd},%d{HH:mm:ss},%d{SSS},%-5level,%msg%n"/>
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
