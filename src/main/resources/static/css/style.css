@@ -8,7 +8,7 @@ body {
 
 /* コンテナスタイル */
 .container {
-	max-width: 600px;
+	max-width: 700px;
 	padding: 2rem;
 	background: white;
 	border-radius: 8px;
@@ -71,7 +71,7 @@ h1 {
 #resultContainer.show,
 #errorContainer.show {
 	opacity: 1;
-	display: block; 
+	display: block;
 }
 
 
@@ -97,4 +97,50 @@ h1 {
 	h1 {
 		font-size: 1.5rem;
 	}
+}
+
+
+/*GetImage*/
+.input-group {
+	display: flex;
+	gap: 10px;
+}
+
+input {
+	padding: 8px;
+	flex-grow: 1;
+}
+
+button {
+	padding: 8px 16px;
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #45a049;
+}
+
+#imageContainer {
+	margin-top: 20px;
+	text-align: center;
+}
+
+#imagePreview {
+	max-width: 100%;
+	max-height: 400px;
+	border: 1px solid #ddd;
+	padding: 5px;
+}
+
+.error {
+	color: red;
+}
+
+
+#status {
+	margin-top: 15px;
+	color: #666;
 }
