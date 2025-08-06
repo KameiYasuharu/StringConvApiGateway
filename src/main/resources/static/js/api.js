@@ -8,7 +8,7 @@ document.getElementById('conversionForm').addEventListener('submit', async funct
 
 	const basePath = window.location.pathname.substring(0, window.location.pathname.indexOf('/', 1)) || '';
 
-	fetch(`${basePath}/ApiGateway?inputString=${encodeURIComponent(inputString)}`, {
+	fetch(`${basePath}/${apiPath}?inputString=${encodeURIComponent(inputString)}`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ async function loadImage() {
 
 	try {
 		const basePath = window.location.pathname.substring(0, window.location.pathname.indexOf('/', 1)) || '';
-		const response = await fetch(`${basePath}/ApiGateway?imageName=${encodeURIComponent(imageName)}`,  {
+		const response = await fetch(`${basePath}/${apiPath}?imageName=${encodeURIComponent(imageName)}`,  {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ async function getPdf() {
 	const status = document.getElementById('status');
 
 	const basePath = window.location.pathname.substring(0, window.location.pathname.indexOf('/', 1)) || '';
-	fetch(`${basePath}/ApiGateway`, {
+	fetch(`${basePath}/${apiPath}`, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/pdf',
@@ -126,7 +126,7 @@ async function getZip() {
 
 	const basePath = window.location.pathname.substring(0, window.location.pathname.indexOf('/', 1)) || '';
 	try {
-		window.location.href = `${basePath}/ApiGateway`;
+		window.location.href = `${basePath}/${apiPath}`;
 
 		status.textContent = 'ZIPダウンロードが完了しました。';
 	} catch (error) {
