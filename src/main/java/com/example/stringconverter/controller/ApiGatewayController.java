@@ -24,7 +24,7 @@ public class ApiGatewayController {
 	 * 変換フォームを表示する
 	 * @return 変換画面のテンプレート名
 	 */
-	@GetMapping("/")
+	@GetMapping("/StringConv_OP1")
 	public String showLoginForm() {
 		return "conversion";
 	}
@@ -34,7 +34,7 @@ public class ApiGatewayController {
 	 * @param request 変換リクエストDTO
 	 * @return 変換結果を含むレスポンスエンティティ
 	 */
-	@GetMapping("/ApiGateway")
+	@GetMapping("/ApiGateway_OP1")
 	@ResponseBody
 	public ResponseEntity<?> gatewayConvert(@ModelAttribute ConversionRequest request) {
 		try {
